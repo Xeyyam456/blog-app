@@ -1,0 +1,24 @@
+.page {
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
