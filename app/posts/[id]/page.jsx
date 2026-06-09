@@ -9,7 +9,21 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
   const post = await getPostById(id).catch(() => null);
   if (!post) return { title: "Post Not Found" };
-  return { title: `Post #${post.id} | Blog App` };
+  return {
+    title: post.title,
+    description: post.body,
+    keywords: ["post", "blog", "article", `post-${post.id}`],
+    openGraph: {
+      title: post.title,
+      description: post.body,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: post.title,
+      description: post.body.slice(0, 200),
+    },
+  };
 }
 
 export default async function PostDetailPage({ params }) {

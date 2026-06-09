@@ -1,11 +1,41 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getAllUsers } from "@/shared/services/userService";
 import UserCard from "@/components/UserCard/UserCard";
 import styles from "./users.module.css";
 
-export default async function UsersPage() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-    cache: "no-store",
-  });
-  const users = await res.json();
+export default function UsersPage() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getAllUsers()
+      .then(setUsers)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <p className={styles.status}>Loading users...</p>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <p className={styles.error}>{error}</p>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>

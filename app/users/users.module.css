@@ -22,3 +22,17 @@
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 24px;
 }
+
+.status {
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+  margin-top: 60px;
+}
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  font-size: 1rem;
+  margin-top: 60px;
+}

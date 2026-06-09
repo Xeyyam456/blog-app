@@ -5,8 +5,20 @@ import styles from "./posts.module.css";
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Posts | Blog App",
-  description: "All blog posts fetched from JSONPlaceholder",
+  title: "Posts",
+  description:
+    "Read all blog posts fetched from JSONPlaceholder API. Updated every 60 seconds with incremental static regeneration.",
+  keywords: ["posts", "blog", "articles", "next.js", "ISR"],
+  openGraph: {
+    title: "Posts | Blog App",
+    description: "Read all blog posts fetched from JSONPlaceholder API.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Posts | Blog App",
+    description: "Read all blog posts fetched from JSONPlaceholder API.",
+  },
 };
 
 export default async function PostsPage() {
@@ -19,11 +31,11 @@ export default async function PostsPage() {
         <p className={styles.subheading}>
           {posts.length} posts — refreshed every 60 seconds
         </p>
-        <div className={styles.grid}>
+        <section aria-label="Posts grid" className={styles.grid}>
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
-        </div>
+        </section>
       </main>
     </div>
   );
