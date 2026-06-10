@@ -60,6 +60,9 @@ export default function RootLayout({ children }) {
           <Link href="/users" className={styles.navLink}>
             Users
           </Link>
+          <Link href="/products" className={styles.navLink}>
+            Products
+          </Link>
         </nav>
         {children}
       </body>
